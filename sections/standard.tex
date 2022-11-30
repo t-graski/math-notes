@@ -1,10 +1,52 @@
-\section{standard}
-lorem ipsum dolor sit amet, consectetur adipiscing elit in imperdiet etiam. Aliqu tempor auctor euismod
-lorem ipsum dolor sit amet, consectetur adipiscing elit in imperdiet etiam. Aliqu tempor auctor euismod
-lorem ipsum dolor sit amet, consectetur adipiscing elit in imperdiet etiam. Aliqu tempor auctor euismod
-lorem ipsum dolor sit amet, consectetur adipiscing elit in imperdiet etiam. Aliqu tempor auctor euismod
-lorem ipsum dolor sit amet, consectetur adipiscing elit in imperdiet etiam. Aliqu tempor auctor euismod
-The value of $x$ is $7$.
-\begin{equation}
-    \mu = \frac{x_{1} + x_{2} + \cdots + x_{n}}{N} = \frac{1}{N} * \sum_{i=1}^{N} x_{i}
-\end{equation}
+\section{Normalverteilung}
+Zentraler Grenzwertsatz: \begin{math}
+    f(x) = \frac{1}{\sigma * \sqrt{2 * \pi}} * e^{-\frac{1}{2} * \left(\frac{x - \mu}{\sigma}\right)^2}
+\end{math} dieser ist relevant.
+
+Mathcad Befehle:
+\begin{table}[h]
+    \caption{Mathcad Befehle}
+    \begin{tabularx}{\textwidth}{|l|X|}
+        \hline
+        \textbf{Befehl}            & \textbf{Beschreibung}                                                                        \\ \hline
+        dnorm (x, $\mu$, $\sigma$) & Wahrscheinlichkeitsdichte f\"ur $X$ = $x$. Gau\ss'sche Glockenkurve                          \\ \hline
+        pnorm (x $\mu$, $\sigma$)  & Wahrscheinlichkeitsverteilung f\"uer den Schwellenwert $x$. Wahrscheinlichkeit $P(X \leq x)$ \\ \hline
+        qnorm (p, $\mu$, $\sigma$) & Inverse Wahrscheinlichkeitsverteilung $P(X \leq x) = p$ nach x aufl\"osen.                   \\ \hline
+    \end{tabularx}
+\end{table}
+
+Eigenschaften der Glockenkurve
+\begin{itemize}
+    \item Beim Erwartungswert $\mu$ besitzt die Glockenkurve ihr maximum.
+    \item Die Standardabweichung $\sigma$ bestimmt die Breite
+          \begin{itemize}
+              \item $\sigma$ ist die Wurzel aus der Varianz
+              \item $\sigma$ ist die Wurzel aus dem Erwartungswert der Quadrate
+          \end{itemize}
+    \item Die Fl\"ache unter der Kurve ist immer 1
+    \item $P(X \le x_{0}) = P(X \leq x_{0}) = \int_{-\infty}^{x_{0}} f(x) dx = F(x_{0})$
+\end{itemize}
+
+\begin{tikzpicture}
+    \begin{axis}[
+            axis lines=left ,
+            xlabel=$x$,
+            ylabel=$f(x)$,
+        ]
+        \addplot[domain=-3:3, samples=100, color=blue, mark=none] {1/sqrt(2*pi)*exp(-1/2*(x)^2)};
+    \end{axis}
+\end{tikzpicture}
+
+\begin{math}
+    P (X \leq x_{0}) = P (X \le x_{0}) = \begin{cases}
+        \int_{\infty}^{x_{0}} f(x) dx \\
+        1 - P(X \leq x_{0}) = 1 - F(x_{0})
+    \end{cases}
+\end{math}
+
+\textbf{Bsp.} Abf\"ullanlage f\"ur \"Olkanier X \ldots Abf\"ullanlage in Liter $\mu$ =
+5,00 Liter $\sigma$ = 0,09 Liter
+\begin{enumerate}[(a)]
+    \item Wahrscheinlichkeit das F\"ullmenge h\"ochstens 5,10l betr\"agt? \newline $P ( X
+              \leq 5,1) = F(5,1) = pnorm(5,1 ; 5 ; 0.09) = 86.7\%$
+\end{enumerate}
