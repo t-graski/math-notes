@@ -1,0 +1,34 @@
+\documentclass{article}
+\usepackage{mathtools, amssymb, amsthm}
+\usepackage{listings}
+\usepackage{setspace}
+\usepackage{hyperref}
+\usepackage{pdfescape}
+
+\title{Mathematics Notes}
+\date{November 2022}
+\author{Tobias Graski}
+
+\newcounter{RPages}
+
+\clubpenalty=10000
+\widowpenalty=10000
+\displaywidowpenalty=10000
+\interfootnotelinepenalty=10000
+
+\begin{document}
+\begin{titlepage}
+    \maketitle
+    \thispagestyle{empty}
+\end{titlepage}
+\renewcommand{\lstlistlistingname}{source directory}
+
+\pagenumbering{Roman}
+
+\tableofcontents
+\newpage
+\setcounter{RPages}{\value{page}}
+\setcounter{page}{0}
+\pagenumbering{arabic}
+\input{./sections/standard}
+\end{document}
